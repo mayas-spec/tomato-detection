@@ -196,25 +196,23 @@ THEME = dict(
 @st.cache_resource(show_spinner=False)
 def load_models(gate_path, disease_path):
     try:
-        import tensorflow as tf
-        @tf.keras.utils.register_keras_serializable()
-        class EfficientNetPreprocessing(tf.keras.layers.Layer):
-            def call(self, x):
-                return tf.keras.applications.efficientnet.preprocess_input(x)
-        gate    = tf.keras.models.load_model(gate_path)
-        disease = tf.keras.models.load_model(disease_path)
+        import onnxruntime as ort
+        gate    = ort.InferenceSession(gate_path)
+        disease = ort.InferenceSession(disease_path)
         return gate, disease, None
     except ImportError:
-        return None, None, "TensorFlow not installed."
+        return None, None, "onnxruntime not installed."
     except Exception as e:
         return None, None, str(e)
 
 def run_inference(img, gate_model, disease_model):
     arr = np.expand_dims(np.array(img.resize((224,224)).convert("RGB"), dtype=np.float32), 0)
-    gate_prob = float(gate_model.predict(arr, verbose=0)[0][0])
+    gate_input  = gate_model.get_inputs()[0].name
+    gate_prob   = float(gate_model.run(None, {gate_input: arr})[0][0][0])
     if gate_prob < 0.5:
         return {"is_tomato": False, "gate_confidence": 1 - gate_prob}
-    probs = disease_model.predict(arr, verbose=0)[0]
+    disease_input = disease_model.get_inputs()[0].name
+    probs = disease_model.run(None, {disease_input: arr})[0][0]
     names = ["Early Blight","Healthy","Late Blight"]
     return {
         "is_tomato": True,
@@ -297,8 +295,8 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     st.markdown("**Model Paths**")
-    gate_path    = st.text_input("Gate Model (.keras)",    value="models/gate_phase2.keras")
-    disease_path = st.text_input("Disease Model (.keras)", value="models/detect_phase2.keras")
+    gate_path    = st.text_input("Gate Model (.onnx)",    value="models/gate_phase2.onnx")
+    disease_path = st.text_input("Disease Model (.onnx)", value="models/detect_phase2.onnx")
 
     gate_model, disease_model, load_err = load_models(gate_path, disease_path)
 
