@@ -1,6 +1,3 @@
-# Models (large binaries — use Git LFS or keep local)
-models/
-
 # Python
 __pycache__/
 *.py[cod]
