@@ -365,7 +365,8 @@ with tab_diagnose:
     diag_left, diag_right = st.columns([1,1], gap="large")
 
     with diag_left:
-        st.markdown('<div style="font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.5rem;">Upload Image</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.3rem;">Upload Image</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-size:0.75rem;color:rgba(255,255,255,0.28);margin-bottom:0.5rem;">Upload a clear photo of a <strong style="color:rgba(255,255,255,0.45);">tomato plant leaf</strong> — not the fruit.</div>', unsafe_allow_html=True)
         uploaded = st.file_uploader("upload", type=["jpg","jpeg","png","webp"], label_visibility="collapsed")
         if uploaded:
             img = Image.open(uploaded)
