@@ -102,6 +102,35 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
 
 #MainMenu {visibility:hidden;} footer {visibility:hidden;} header {visibility:hidden;}
 section[data-testid="stSidebar"] { background-color:#0d1117; }
+
+@media (max-width: 768px) {
+    .hero { padding: 1.5rem 1.2rem 1.2rem; }
+    .hero h1 { font-size: 1.9rem; }
+    .hero p  { font-size: 0.85rem; }
+
+    .metric-value { font-size: 1.6rem; }
+    .metric-label { font-size: 0.72rem; }
+    .metric-card  { padding: 1rem 0.8rem; }
+
+    /* Stack all Streamlit columns vertically */
+    [data-testid="stHorizontalBlock"] {
+        flex-wrap: wrap !important;
+    }
+    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+        min-width: 100% !important;
+        width: 100% !important;
+        flex: 1 1 100% !important;
+    }
+    /* Metric cards: 2 per row on mobile */
+    [data-testid="stHorizontalBlock"]:has(.metric-card) > [data-testid="stColumn"] {
+        min-width: 48% !important;
+        flex: 1 1 48% !important;
+    }
+
+    .section-header { font-size: 1rem; }
+    .stage-title    { font-size: 0.85rem; }
+    .stage-desc     { font-size: 0.75rem; }
+}
 </style>
 """, unsafe_allow_html=True)
 
