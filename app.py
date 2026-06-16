@@ -24,7 +24,10 @@ st.markdown("""
 *, *::before, *::after { box-sizing: border-box; }
 html, body, [class*="css"] { font-family: 'Inter', sans-serif; color: #e2e8f0; }
 .stApp { background: #060b18; }
-#MainMenu, footer, header { visibility: hidden; }
+#MainMenu { visibility: hidden; }
+footer { visibility: hidden; }
+[data-testid="stToolbar"] { visibility: hidden; }
+[data-testid="collapsedControl"] { visibility: visible !important; display: flex !important; color: #06d6a0 !important; }
 section[data-testid="stSidebar"] {
     background: linear-gradient(180deg,#080f1e 0%,#060b18 100%);
     border-right: 1px solid rgba(255,255,255,0.06);
@@ -595,9 +598,9 @@ def page_detection():
             st.markdown(f'<div class="alert-amber">⚠️ Models not loaded. {model_err or "Check model files."}</div>', unsafe_allow_html=True)
 
     with up_col:
-        st.markdown('<div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:#475569;margin-bottom:0.5rem;">Upload Tomato Leaf Image</div>', unsafe_allow_html=True)
-        uploaded = st.file_uploader("upload", type=["jpg","jpeg","png","webp"],
-            label_visibility="collapsed", key="det_upload")
+        st.markdown('<p style="font-size:0.85rem;font-weight:600;color:#94a3b8;margin-bottom:0.4rem;">📂 Upload a tomato leaf image (JPG, PNG, WEBP)</p>', unsafe_allow_html=True)
+        uploaded = st.file_uploader("Upload a tomato leaf image", type=["jpg","jpeg","png","webp"],
+            key="det_upload")
 
         if uploaded:
             img = Image.open(uploaded)
@@ -1183,8 +1186,44 @@ def page_about():
         """, unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
-#  ROUTER
+#  TOP NAV BAR (always visible, works without sidebar)
 # ══════════════════════════════════════════════════════════════════════════════
+NAV_ITEMS = [
+    ("🏠","Dashboard","dashboard"),
+    ("🔬","Detect","detection"),
+    ("📚","Library","library"),
+    ("📊","Performance","performance"),
+    ("🕐","History","history"),
+    ("ℹ️","About","about"),
+]
+page = st.session_state.page
+cols = st.columns(len(NAV_ITEMS))
+for col, (icon, label, key) in zip(cols, NAV_ITEMS):
+    active = page == key
+    btn_style = (
+        "background:rgba(6,214,160,0.12);border:1px solid rgba(6,214,160,0.3);color:#a7f3d0;"
+        if active else
+        "background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);color:#64748b;"
+    )
+    with col:
+        if st.button(f"{icon} {label}", key=f"topnav_{key}", use_container_width=True,
+                     help=label):
+            st.session_state.page = key
+            st.rerun()
+
+st.markdown("""
+<style>
+[data-testid="stHorizontalBlock"]:first-of-type button {
+    border-radius: 10px !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    padding: 0.4rem !important;
+}
+</style>
+""", unsafe_allow_html=True)
+st.markdown("<div style='height:1.2rem'></div>", unsafe_allow_html=True)
+
+# ── ROUTER ───────────────────────────────────────────────────────────────────
 page = st.session_state.page
 if   page == "dashboard":   page_dashboard()
 elif page == "detection":   page_detection()
