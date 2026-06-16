@@ -309,7 +309,7 @@ with st.sidebar:
     st.markdown(f'<span class="status-dot {d_dot}"></span> Disease Model — {d_txt}', unsafe_allow_html=True)
 
     if load_err:
-        st.markdown(f'<div class="warn-box" style="margin-top:0.5rem;">⚠️ {load_err[:100]}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="warn-box" style="margin-top:0.5rem;">⚠️ {load_err}</div>', unsafe_allow_html=True)
 
     st.markdown(
         '<p style="color:rgba(255,255,255,0.18);font-size:0.7rem;text-align:center;margin-top:2rem;">CapStone Project · 2024</p>',
