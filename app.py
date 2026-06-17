@@ -371,19 +371,18 @@ def gauge_fig(val, color):
 with st.sidebar:
     st.markdown("""
     <div style="padding:1.5rem 0.5rem 1rem;text-align:center;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:1rem;">
-      <div style="font-size:2.2rem;">🍅</div>
       <div style="font-size:1rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.3px;">TomatoVision AI</div>
       <div style="font-size:0.68rem;color:#475569;margin-top:0.2rem;">Plant Disease Detection</div>
     </div>
     """, unsafe_allow_html=True)
 
     NAV_LABELS = [
-        "🏠  Dashboard",
-        "🔬  Disease Detection",
-        "📚  Disease Library",
-        "📊  Model Performance",
-        "🕐  Prediction History",
-        "ℹ️   About",
+        "Dashboard",
+        "Disease Detection",
+        "Disease Library",
+        "Model Performance",
+        "Prediction History",
+        "About",
     ]
     NAV_KEYS = ["dashboard","detection","library","performance","history","about"]
     key_to_idx = {k:i for i,k in enumerate(NAV_KEYS)}
@@ -432,14 +431,14 @@ with st.sidebar:
 def page_dashboard():
     st.markdown("""
     <div class="hero-wrap">
-      <div class="hero-eyebrow">⚡ AI-Powered Agricultural Intelligence</div>
+      <div class="hero-eyebrow">Computer Vision Capstone Project</div>
       <div class="hero-title">TomatoVision <span>AI</span></div>
-      <div class="hero-sub">AI-powered tomato disease detection and crop health monitoring platform.
-        Two-stage deep learning pipeline with Explainable AI for precision agriculture.</div>
+      <div class="hero-sub">Tomato plant disease detection using a two-stage deep learning pipeline.
+        Upload a leaf image to get an instant diagnosis with visual explanations.</div>
       <div>
-        <span class="hero-chip">🎓 Capstone Project</span>
-        <span class="hero-chip">🌿 Agricultural AI</span>
-        <span class="hero-chip">🔬 Transfer Learning</span>
+        <span class="hero-chip">EfficientNetB0</span>
+        <span class="hero-chip">PlantVillage Dataset</span>
+        <span class="hero-chip">ONNX Runtime</span>
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -515,25 +514,21 @@ def page_dashboard():
         st.markdown("""
         <div style="display:flex;flex-direction:column;gap:0.5rem;padding:0.3rem 0;">
           <div style="display:flex;align-items:center;gap:0.8rem;padding:0.7rem 1rem;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.15);border-radius:10px;">
-            <span style="font-size:1.1rem;">📷</span>
             <div><div style="color:#93c5fd;font-size:0.82rem;font-weight:600;">Image Input</div><div style="color:#475569;font-size:0.7rem;">224×224 px · JPG/PNG</div></div>
           </div>
           <div style="text-align:center;color:rgba(255,255,255,0.15);font-size:0.8rem;">↓</div>
           <div style="display:flex;align-items:center;gap:0.8rem;padding:0.7rem 1rem;background:rgba(6,214,160,0.06);border:1px solid rgba(6,214,160,0.15);border-radius:10px;">
-            <span style="font-size:1.1rem;">🔍</span>
-            <div><div style="color:#6ee7b7;font-size:0.82rem;font-weight:600;">Stage 1 — Gate Model</div><div style="color:#475569;font-size:0.7rem;">Tomato leaf verification · 99.93% acc</div></div>
+            <div><div style="color:#6ee7b7;font-size:0.82rem;font-weight:600;">Stage 1 — Gate Model</div><div style="color:#475569;font-size:0.7rem;">Tomato leaf verification · 99.93% accuracy</div></div>
             <span class="badge badge-teal" style="margin-left:auto;">EfficientNetB0</span>
           </div>
           <div style="text-align:center;color:rgba(255,255,255,0.15);font-size:0.8rem;">↓</div>
           <div style="display:flex;align-items:center;gap:0.8rem;padding:0.7rem 1rem;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:10px;">
-            <span style="font-size:1.1rem;">🧬</span>
             <div><div style="color:#fca5a5;font-size:0.82rem;font-weight:600;">Stage 2 — Disease Classifier</div><div style="color:#475569;font-size:0.7rem;">3-class · 96.16% accuracy</div></div>
             <span class="badge badge-red" style="margin-left:auto;">EfficientNetB0</span>
           </div>
           <div style="text-align:center;color:rgba(255,255,255,0.15);font-size:0.8rem;">↓</div>
           <div style="display:flex;align-items:center;gap:0.8rem;padding:0.7rem 1rem;background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.15);border-radius:10px;">
-            <span style="font-size:1.1rem;">🔮</span>
-            <div><div style="color:#c4b5fd;font-size:0.82rem;font-weight:600;">Explainable AI (XAI)</div><div style="color:#475569;font-size:0.7rem;">Occlusion sensitivity heatmap</div></div>
+            <div><div style="color:#c4b5fd;font-size:0.82rem;font-weight:600;">Explainability (XAI)</div><div style="color:#475569;font-size:0.7rem;">Occlusion sensitivity heatmap</div></div>
           </div>
         </div>
         """, unsafe_allow_html=True)
@@ -575,7 +570,7 @@ DISEASE_CFG = {
 }
 
 def page_detection():
-    st.markdown('<div style="font-size:1.4rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.5px;margin-bottom:1.5rem;">🔬 Disease Detection</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:1.4rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.5px;margin-bottom:1.5rem;">Disease Detection</div>', unsafe_allow_html=True)
 
     up_col, info_col = st.columns([3,2], gap="large")
 
@@ -584,21 +579,21 @@ def page_detection():
         <div class="glass" style="margin-bottom:1rem;">
           <div class="sec-head" style="margin-bottom:0.8rem;"><div class="dot"></div>How to Use</div>
           <div style="font-size:0.8rem;color:#64748b;line-height:1.75;">
-            <div style="margin-bottom:0.4rem;">📸 <strong style="color:#94a3b8;">Upload a clear tomato leaf photo</strong></div>
-            <div style="margin-bottom:0.4rem;">✅ Use good, even lighting</div>
-            <div style="margin-bottom:0.4rem;">🍃 Capture a single leaf clearly</div>
-            <div style="margin-bottom:0.4rem;">⬜ Plain background preferred</div>
-            <div style="margin-bottom:0.4rem;">🚫 Avoid blurry or dark images</div>
-            <div>📐 JPG, PNG · Max 20 MB</div>
+            <div style="margin-bottom:0.4rem;"><strong style="color:#94a3b8;">Upload a clear tomato leaf photo</strong></div>
+            <div style="margin-bottom:0.4rem;">— Use good, even lighting</div>
+            <div style="margin-bottom:0.4rem;">— Capture a single leaf, filling most of the frame</div>
+            <div style="margin-bottom:0.4rem;">— Plain background preferred</div>
+            <div style="margin-bottom:0.4rem;">— Avoid blurry or dark images</div>
+            <div>— JPG, PNG, WEBP · Max 200 MB</div>
           </div>
         </div>
         """, unsafe_allow_html=True)
 
         if not models_ok:
-            st.markdown(f'<div class="alert-amber">⚠️ Models not loaded. {model_err or "Check model files."}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="alert-amber">Models not loaded. {model_err or "Check model files."}</div>', unsafe_allow_html=True)
 
     with up_col:
-        st.markdown('<p style="font-size:0.85rem;font-weight:600;color:#94a3b8;margin-bottom:0.4rem;">📂 Upload a tomato leaf image (JPG, PNG, WEBP)</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:0.85rem;font-weight:600;color:#94a3b8;margin-bottom:0.4rem;">Upload a tomato leaf image (JPG, PNG, WEBP)</p>', unsafe_allow_html=True)
         uploaded = st.file_uploader("Upload a tomato leaf image", type=["jpg","jpeg","png","webp"],
             key="det_upload")
 
@@ -615,7 +610,7 @@ def page_detection():
             """, unsafe_allow_html=True)
 
             st.markdown("<br>", unsafe_allow_html=True)
-            analyze = st.button("🔬  Analyze Leaf", use_container_width=True,
+            analyze = st.button("Analyze Leaf", use_container_width=True,
                 type="primary", disabled=not models_ok)
 
             if analyze:
@@ -628,11 +623,11 @@ def page_detection():
                     html = '<div style="margin:1rem 0;">'
                     for i,lbl in enumerate(labels):
                         if i < done:
-                            html += f'<div class="step-item done">✅ {lbl}</div>'
+                            html += f'<div class="step-item done">&#10003; {lbl}</div>'
                         elif i == active:
-                            html += f'<div class="step-item active">⏳ {lbl}</div>'
+                            html += f'<div class="step-item active">&#8250; {lbl}</div>'
                         else:
-                            html += f'<div class="step-item">○ {lbl}</div>'
+                            html += f'<div class="step-item">&ndash; {lbl}</div>'
                     html += "</div>"
                     steps_ph.markdown(html, unsafe_allow_html=True)
 
@@ -669,8 +664,7 @@ def page_detection():
         else:
             st.markdown("""
             <div class="upload-hint">
-              <div style="font-size:2.5rem;margin-bottom:0.8rem;opacity:0.4;">🍃</div>
-              <strong style="color:#64748b;">Drag & drop or click to upload</strong><br>
+                <strong style="color:#64748b;">Drag & drop or click to upload</strong><br>
               Upload a clear close-up photo of a <strong>tomato plant leaf</strong>
             </div>
             """, unsafe_allow_html=True)
@@ -690,7 +684,6 @@ def page_detection():
         gc = result["gate_conf"]*100
         st.markdown(f"""
         <div style="background:rgba(245,158,11,0.06);border:1.5px solid rgba(245,158,11,0.25);border-radius:16px;padding:2rem;text-align:center;margin-bottom:1.5rem;">
-          <div style="font-size:3rem;margin-bottom:0.8rem;">⚠️</div>
           <div style="font-size:1.4rem;font-weight:800;color:#fcd34d;margin-bottom:0.4rem;">Image Verification Failed</div>
           <div style="color:#92400e;font-size:0.9rem;margin-bottom:1rem;">This image does not appear to contain a tomato leaf. ({gc:.1f}% confidence)</div>
           <div style="color:#64748b;font-size:0.82rem;line-height:1.8;">
@@ -739,7 +732,6 @@ def page_detection():
           </div>
           <div class="result-body">
             <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.3rem;">
-              <span style="font-size:2rem;">{cfg['icon']}</span>
               <span class="badge {cfg['risk_badge']}">{cfg['risk']}</span>
             </div>
             <div class="pred-name" style="color:{cfg['light']};">{disease}</div>
@@ -801,10 +793,10 @@ def page_detection():
             st.image(Image.fromarray(overlay), use_container_width=True)
             st.markdown('<div class="xai-panel-label">Heatmap Overlay</div>', unsafe_allow_html=True)
 
-        xai_msg = "No significant disease patterns detected — the model found the leaf uniformly healthy." if disease == "Healthy" else f"Warm regions (red/yellow) indicate leaf areas most influential in predicting <strong>{disease}</strong>. These regions exhibit characteristic disease patterns the model has learned to associate with this condition."
-        st.markdown(f'<div class="alert-blue" style="margin-top:1rem;">🔮 <strong>XAI Insight:</strong> {xai_msg}</div>', unsafe_allow_html=True)
+        xai_msg = "No significant disease patterns detected — the model found the leaf uniformly healthy." if disease == "Healthy" else f"Warm regions (red/yellow) indicate the leaf areas most influential in predicting <strong>{disease}</strong>. These are where the model detected characteristic disease patterns."
+        st.markdown(f'<div class="alert-blue" style="margin-top:1rem;"><strong>Heatmap interpretation:</strong> {xai_msg}</div>', unsafe_allow_html=True)
 
-        with st.expander("ℹ️  What is XAI / Occlusion Sensitivity?"):
+        with st.expander("How does the heatmap work?"):
             st.markdown("""
             **Explainable AI (XAI)** makes AI decisions transparent and interpretable.
 
@@ -819,7 +811,7 @@ def page_detection():
             - **Stakeholders** build trust in the AI system's reasoning
             """)
     else:
-        st.markdown('<div class="alert-amber">⚠️ XAI heatmap could not be generated for this image.</div>', unsafe_allow_html=True)
+        st.markdown('<div class="alert-amber">Heatmap could not be generated for this image.</div>', unsafe_allow_html=True)
 
     # ── Disease info & recommendations ───────────────────────────────────────
     st.markdown("<br>", unsafe_allow_html=True)
@@ -841,11 +833,11 @@ def page_detection():
     with di2:
         st.markdown('<div class="sec-head"><div class="dot"></div>Actionable Recommendations</div>', unsafe_allow_html=True)
         alert_cls  = "alert-red" if cfg["risk"]=="Critical" else "alert-amber" if cfg["risk"]=="High Risk" else "alert-green"
-        actions_html = "".join([f'<div style="display:flex;align-items:flex-start;gap:0.5rem;margin-bottom:0.4rem;font-size:0.82rem;"><span>{"🚨" if cfg["risk"]=="Critical" else "⚡" if cfg["risk"]=="High Risk" else "✅"}</span><span>{a}</span></div>' for a in cfg["actions"]])
+        actions_html = "".join([f'<div style="display:flex;align-items:flex-start;gap:0.5rem;margin-bottom:0.4rem;font-size:0.82rem;"><span style="color:#475569;">—</span><span>{a}</span></div>' for a in cfg["actions"]])
         st.markdown(f"""
         <div class="{alert_cls}" style="margin-bottom:0.8rem;">
-          <strong>{'🚨 Immediate Action Required' if cfg['risk']=='Critical' else '⚡ Action Recommended' if cfg['risk']=='High Risk' else '✅ Plant is Healthy'}</strong><br>
-          <span style="font-size:0.8rem;">{cfg['treatment'][:100]}…</span>
+          <strong>{'Immediate Action Required' if cfg['risk']=='Critical' else 'Action Recommended' if cfg['risk']=='High Risk' else 'Plant is Healthy'}</strong><br>
+          <span style="font-size:0.8rem;">{cfg['treatment']}</span>
         </div>
         <div class="glass" style="padding:1.2rem;">
           <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:#334155;margin-bottom:0.8rem;">Farmer Checklist</div>
@@ -857,13 +849,13 @@ def page_detection():
 #  PAGE: DISEASE LIBRARY
 # ══════════════════════════════════════════════════════════════════════════════
 def page_library():
-    st.markdown('<div style="font-size:1.4rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.5px;margin-bottom:1.5rem;">📚 Disease Library</div>', unsafe_allow_html=True)
-    search = st.text_input("🔍  Search diseases, symptoms, or treatments…", placeholder="e.g. brown spots, fungicide, blight…", label_visibility="collapsed")
+    st.markdown('<div style="font-size:1.4rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.5px;margin-bottom:1.5rem;">Disease Library</div>', unsafe_allow_html=True)
+    search = st.text_input("Search diseases, symptoms, or treatments", placeholder="e.g. brown spots, fungicide, blight…", label_visibility="collapsed")
     st.markdown("<br>", unsafe_allow_html=True)
 
     diseases = [
         {
-            "name":"Healthy","icon":"🟢","severity":"None","severity_cls":"badge-green",
+            "name":"Healthy","icon":"","severity":"None","severity_cls":"badge-green",
             "color":"#22c55e","bg":"rgba(34,197,94,0.04)","border":"rgba(34,197,94,0.15)",
             "pathogen":"No pathogen detected","description":"The tomato plant leaf appears in optimal health. Leaves exhibit vibrant green coloration with no visible lesions, spots, or signs of infection. The plant demonstrates normal growth patterns.",
             "symptoms":["Vibrant uniform green color","No visible spots or lesions","Normal leaf texture","No wilting","No discoloration"],
@@ -872,7 +864,7 @@ def page_library():
             "treatment":"No treatment required. Continue standard crop management.",
         },
         {
-            "name":"Early Blight","icon":"🟠","severity":"High","severity_cls":"badge-amber",
+            "name":"Early Blight","icon":"","severity":"High","severity_cls":"badge-amber",
             "color":"#f59e0b","bg":"rgba(245,158,11,0.04)","border":"rgba(245,158,11,0.15)",
             "pathogen":"Alternaria solani","description":"A fungal disease causing characteristic dark brown lesions with concentric rings resembling a target or bull's eye pattern. Primarily affects lower, older leaves first before progressing upward.",
             "symptoms":["Dark brown lesions (2–10 mm)","Concentric ring pattern","Yellow chlorotic halo","Lower leaves infected first","Premature defoliation"],
@@ -881,7 +873,7 @@ def page_library():
             "treatment":"Apply copper-based or mancozeb fungicides every 7–10 days. Remove infected leaves. Ensure good air circulation.",
         },
         {
-            "name":"Late Blight","icon":"🔴","severity":"Critical","severity_cls":"badge-red",
+            "name":"Late Blight","icon":"","severity":"Critical","severity_cls":"badge-red",
             "color":"#ef4444","bg":"rgba(239,68,68,0.04)","border":"rgba(239,68,68,0.15)",
             "pathogen":"Phytophthora infestans","description":"A devastating oomycete disease capable of destroying entire crops within days. This is the pathogen responsible for the Irish Potato Famine of the 1840s. Spreads explosively under cool, wet conditions.",
             "symptoms":["Water-soaked irregular lesions","White mold on leaf underside","Rapid browning and collapse","Greasy/oily appearance","Strong foul odor"],
@@ -891,9 +883,8 @@ def page_library():
         },
     ]
 
-    filtered = [d for d in diseases if not search or any(
-        search.lower() in (d["name"]+d["description"]+" ".join(d["symptoms"])+" ".join(d["treatment"])).lower()
-    )]
+    filtered = [d for d in diseases if not search or
+        search.lower() in (d["name"] + d["description"] + " ".join(d["symptoms"]) + d["treatment"]).lower()]
 
     if not filtered:
         st.markdown('<div class="alert-blue">No diseases match your search. Try different keywords.</div>', unsafe_allow_html=True)
@@ -907,7 +898,6 @@ def page_library():
             st.markdown(f"""
             <div class="dis-card" style="background:{d['bg']};border-color:{d['border']};">
               <div class="dis-card-head" style="background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);">
-                <span style="font-size:1.6rem;">{d['icon']}</span>
                 <div>
                   <div style="color:{d['color']};font-size:0.95rem;font-weight:700;">{d['name']}</div>
                   <div style="color:#475569;font-size:0.68rem;font-style:italic;">{d['pathogen']}</div>
@@ -930,7 +920,7 @@ def page_library():
 #  PAGE: MODEL PERFORMANCE
 # ══════════════════════════════════════════════════════════════════════════════
 def page_performance():
-    st.markdown('<div style="font-size:1.4rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.5px;margin-bottom:1.5rem;">📊 Model Performance</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:1.4rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.5px;margin-bottom:1.5rem;">Model Performance</div>', unsafe_allow_html=True)
 
     # Gate model
     st.markdown('<div class="sec-head"><div class="dot"></div>Stage 1 — Gate Model (Tomato Leaf Verification)</div>', unsafe_allow_html=True)
@@ -1024,13 +1014,12 @@ def page_performance():
 #  PAGE: PREDICTION HISTORY
 # ══════════════════════════════════════════════════════════════════════════════
 def page_history():
-    st.markdown('<div style="font-size:1.4rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.5px;margin-bottom:1.5rem;">🕐 Prediction History</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:1.4rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.5px;margin-bottom:1.5rem;">Prediction History</div>', unsafe_allow_html=True)
     hist = st.session_state.history
 
     if not hist:
         st.markdown("""
         <div style="text-align:center;padding:3rem;color:#334155;">
-          <div style="font-size:3rem;margin-bottom:1rem;opacity:0.4;">📋</div>
           <div style="font-size:1rem;font-weight:600;color:#475569;">No predictions yet</div>
           <div style="font-size:0.82rem;color:#334155;margin-top:0.3rem;">Go to Disease Detection and analyze a leaf image.</div>
         </div>
@@ -1053,11 +1042,11 @@ def page_history():
     # Filters
     fc1,fc2,fc3 = st.columns([2,2,1])
     with fc1:
-        search = st.text_input("🔍 Search by filename or disease", label_visibility="collapsed", placeholder="Search…")
+        search = st.text_input("Search by filename or disease", label_visibility="collapsed", placeholder="Search…")
     with fc2:
         filter_dis = st.selectbox("Filter", ["All","Tomato Only","Non-Tomato","Healthy","Early Blight","Late Blight"], label_visibility="collapsed")
     with fc3:
-        if st.button("🗑 Clear All", use_container_width=True):
+        if st.button("Clear All", use_container_width=True):
             st.session_state.history = []
             st.rerun()
 
@@ -1072,7 +1061,7 @@ def page_history():
     df = pd.DataFrame([{
         "Timestamp":      h.get("timestamp",""),
         "File":           h.get("filename",""),
-        "Tomato Leaf":    "✅ Yes" if h["is_tomato"] else "❌ No",
+        "Tomato Leaf":    "Yes" if h["is_tomato"] else "No",
         "Prediction":     h.get("disease","—"),
         "Confidence":     f"{h.get('confidence',0)*100:.1f}%" if h.get("confidence") else "—",
         "Gate Conf":      f"{h.get('gate_conf',0)*100:.1f}%",
@@ -1089,13 +1078,13 @@ def page_history():
             "Confidence":    h.get("confidence",""),
             "Gate Confidence": h.get("gate_conf",""),
         } for h in filtered]).to_csv(index=False)
-        st.download_button("📥  Export CSV", csv, "tomatovision_predictions.csv", "text/csv", use_container_width=True)
+        st.download_button("Export CSV", csv, "tomatovision_predictions.csv", "text/csv", use_container_width=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
 #  PAGE: ABOUT
 # ══════════════════════════════════════════════════════════════════════════════
 def page_about():
-    st.markdown('<div style="font-size:1.4rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.5px;margin-bottom:1.5rem;">ℹ️ About TomatoVision AI</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:1.4rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.5px;margin-bottom:1.5rem;">About</div>', unsafe_allow_html=True)
 
     a1,a2 = st.columns(2, gap="large")
     with a1:
@@ -1120,17 +1109,17 @@ def page_about():
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
         """, unsafe_allow_html=True)
         tech = [
-            ("🧠","TensorFlow 2.18","Deep Learning Framework"),
-            ("⚡","ONNX Runtime","Production Inference"),
-            ("🏗️","EfficientNetB0","CNN Backbone"),
-            ("🌐","Streamlit","Web Interface"),
-            ("📊","Plotly","Interactive Charts"),
-            ("🖼️","Pillow","Image Processing"),
-            ("🔢","NumPy / Pandas","Data Processing"),
-            ("🔮","Occlusion XAI","Explainability"),
+            ("TensorFlow 2.18","Deep Learning Framework"),
+            ("ONNX Runtime","Production Inference"),
+            ("EfficientNetB0","CNN Backbone"),
+            ("Streamlit","Web Interface"),
+            ("Plotly","Interactive Charts"),
+            ("Pillow","Image Processing"),
+            ("NumPy / Pandas","Data Processing"),
+            ("Occlusion Sensitivity","Explainability"),
         ]
-        for icon, name, desc in tech:
-            st.markdown(f'<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:0.6rem 0.8rem;"><div style="font-size:0.8rem;font-weight:600;color:#cbd5e1;">{icon} {name}</div><div style="font-size:0.68rem;color:#475569;">{desc}</div></div>', unsafe_allow_html=True)
+        for name, desc in tech:
+            st.markdown(f'<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:0.6rem 0.8rem;"><div style="font-size:0.8rem;font-weight:600;color:#cbd5e1;">{name}</div><div style="font-size:0.68rem;color:#475569;">{desc}</div></div>', unsafe_allow_html=True)
         st.markdown("</div></div>", unsafe_allow_html=True)
 
     with a2:
@@ -1143,17 +1132,17 @@ def page_about():
           <div style="margin-top:0.8rem;">
         """, unsafe_allow_html=True)
         layers = [
-            ("📥","Input Layer","(None, 224, 224, 3)"),
-            ("⚙️","EfficientNet Preprocessing","Normalisation"),
-            ("🏗️","EfficientNetB0","Feature extraction"),
-            ("🌐","GlobalAveragePooling2D","(None, 1280)"),
-            ("⚖️","BatchNormalization","Stabilisation"),
-            ("💧","Dropout (0.3)","Regularisation"),
-            ("🔲","Dense (128, ReLU)","Feature compression"),
+            ("Input Layer","(None, 224, 224, 3)"),
+            ("EfficientNet Preprocessing","Normalisation"),
+            ("EfficientNetB0","Feature extraction"),
+            ("GlobalAveragePooling2D","(None, 1280)"),
+            ("BatchNormalization","Stabilisation"),
+            ("Dropout (0.3)","Regularisation"),
+            ("Dense (128, ReLU)","Feature compression"),
         ]
-        for icon,name,info in layers:
-            st.markdown(f'<div style="display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0.6rem;margin-bottom:0.2rem;background:rgba(255,255,255,0.02);border-radius:7px;font-size:0.78rem;"><span>{icon}</span><span style="color:#94a3b8;flex:1;">{name}</span><span style="color:#334155;font-family:monospace;font-size:0.7rem;">{info}</span></div>', unsafe_allow_html=True)
-        st.markdown(f'<div style="display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0.6rem;background:rgba(6,214,160,0.06);border:1px solid rgba(6,214,160,0.15);border-radius:7px;font-size:0.78rem;"><span>📤</span><span style="color:#6ee7b7;flex:1;">Output Head</span><span style="color:#334155;font-family:monospace;font-size:0.7rem;">sigmoid / softmax</span></div>', unsafe_allow_html=True)
+        for name,info in layers:
+            st.markdown(f'<div style="display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0.6rem;margin-bottom:0.2rem;background:rgba(255,255,255,0.02);border-radius:7px;font-size:0.78rem;"><span style="color:#94a3b8;flex:1;">{name}</span><span style="color:#334155;font-family:monospace;font-size:0.7rem;">{info}</span></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="display:flex;align-items:center;gap:0.6rem;padding:0.4rem 0.6rem;background:rgba(6,214,160,0.06);border:1px solid rgba(6,214,160,0.15);border-radius:7px;font-size:0.78rem;"><span style="color:#6ee7b7;flex:1;">Output Head</span><span style="color:#334155;font-family:monospace;font-size:0.7rem;">sigmoid / softmax</span></div>', unsafe_allow_html=True)
         st.markdown("</div></div>", unsafe_allow_html=True)
 
         st.markdown("""
@@ -1189,25 +1178,18 @@ def page_about():
 #  TOP NAV BAR (always visible, works without sidebar)
 # ══════════════════════════════════════════════════════════════════════════════
 NAV_ITEMS = [
-    ("🏠","Dashboard","dashboard"),
-    ("🔬","Detect","detection"),
-    ("📚","Library","library"),
-    ("📊","Performance","performance"),
-    ("🕐","History","history"),
-    ("ℹ️","About","about"),
+    ("Dashboard","dashboard"),
+    ("Detect","detection"),
+    ("Disease Library","library"),
+    ("Model Performance","performance"),
+    ("History","history"),
+    ("About","about"),
 ]
 page = st.session_state.page
 cols = st.columns(len(NAV_ITEMS))
-for col, (icon, label, key) in zip(cols, NAV_ITEMS):
-    active = page == key
-    btn_style = (
-        "background:rgba(6,214,160,0.12);border:1px solid rgba(6,214,160,0.3);color:#a7f3d0;"
-        if active else
-        "background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);color:#64748b;"
-    )
+for col, (label, key) in zip(cols, NAV_ITEMS):
     with col:
-        if st.button(f"{icon} {label}", key=f"topnav_{key}", use_container_width=True,
-                     help=label):
+        if st.button(label, key=f"topnav_{key}", use_container_width=True):
             st.session_state.page = key
             st.rerun()
 
