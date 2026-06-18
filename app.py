@@ -1,4 +1,4 @@
-"""TomatoVision AI — Production-Grade Tomato Disease Detection Platform"""
+"""TomatoVision — Tomato Disease Detection Platform"""
 
 import streamlit as st
 import numpy as np
@@ -9,7 +9,7 @@ from PIL import Image
 import io, datetime
 
 st.set_page_config(
-    page_title="TomatoVision AI",
+    page_title="TomatoVision",
     page_icon="🍅",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -371,7 +371,7 @@ def gauge_fig(val, color):
 with st.sidebar:
     st.markdown("""
     <div style="padding:1.5rem 0.5rem 1rem;text-align:center;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:1rem;">
-      <div style="font-size:1rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.3px;">TomatoVision AI</div>
+      <div style="font-size:1rem;font-weight:800;color:#f1f5f9;letter-spacing:-0.3px;">TomatoVision</div>
       <div style="font-size:0.68rem;color:#475569;margin-top:0.2rem;">Plant Disease Detection</div>
     </div>
     """, unsafe_allow_html=True)
@@ -431,8 +431,7 @@ with st.sidebar:
 def page_dashboard():
     st.markdown("""
     <div class="hero-wrap">
-      <div class="hero-eyebrow">Computer Vision Capstone Project</div>
-      <div class="hero-title">TomatoVision <span>AI</span></div>
+      <div class="hero-title">Tomato<span>Vision</span></div>
       <div class="hero-sub">Tomato plant disease detection using a two-stage deep learning pipeline.
         Upload a leaf image to get an instant diagnosis with visual explanations.</div>
       <div>
@@ -580,11 +579,11 @@ def page_detection():
           <div class="sec-head" style="margin-bottom:0.8rem;"><div class="dot"></div>How to Use</div>
           <div style="font-size:0.8rem;color:#64748b;line-height:1.75;">
             <div style="margin-bottom:0.4rem;"><strong style="color:#94a3b8;">Upload a clear tomato leaf photo</strong></div>
-            <div style="margin-bottom:0.4rem;">— Use good, even lighting</div>
-            <div style="margin-bottom:0.4rem;">— Capture a single leaf, filling most of the frame</div>
-            <div style="margin-bottom:0.4rem;">— Plain background preferred</div>
-            <div style="margin-bottom:0.4rem;">— Avoid blurry or dark images</div>
-            <div>— JPG, PNG, WEBP · Max 200 MB</div>
+            <div style="margin-bottom:0.4rem;">Use good, even lighting</div>
+            <div style="margin-bottom:0.4rem;">Capture a single leaf, filling most of the frame</div>
+            <div style="margin-bottom:0.4rem;">Plain background preferred</div>
+            <div style="margin-bottom:0.4rem;">Avoid blurry or dark images</div>
+            <div>JPG, PNG, WEBP · Max 200 MB</div>
           </div>
         </div>
         """, unsafe_allow_html=True)
@@ -833,7 +832,7 @@ def page_detection():
     with di2:
         st.markdown('<div class="sec-head"><div class="dot"></div>Actionable Recommendations</div>', unsafe_allow_html=True)
         alert_cls  = "alert-red" if cfg["risk"]=="Critical" else "alert-amber" if cfg["risk"]=="High Risk" else "alert-green"
-        actions_html = "".join([f'<div style="display:flex;align-items:flex-start;gap:0.5rem;margin-bottom:0.4rem;font-size:0.82rem;"><span style="color:#475569;">—</span><span>{a}</span></div>' for a in cfg["actions"]])
+        actions_html = "".join([f'<div style="display:flex;align-items:flex-start;gap:0.5rem;margin-bottom:0.4rem;font-size:0.82rem;"><span style="color:#475569;">{i+1}.</span><span>{a}</span></div>' for i,a in enumerate(cfg["actions"])])
         st.markdown(f"""
         <div class="{alert_cls}" style="margin-bottom:0.8rem;">
           <strong>{'Immediate Action Required' if cfg['risk']=='Critical' else 'Action Recommended' if cfg['risk']=='High Risk' else 'Plant is Healthy'}</strong><br>
@@ -1092,8 +1091,8 @@ def page_about():
         <div class="glass" style="margin-bottom:1rem;">
           <div class="sec-head"><div class="dot"></div>Project Overview</div>
           <div style="color:#64748b;font-size:0.84rem;line-height:1.8;">
-            TomatoVision AI is an end-to-end deep learning platform for tomato plant disease detection,
-            developed as a Computer Vision Capstone Project. It employs a two-stage AI pipeline to first
+            TomatoVision is an end-to-end deep learning platform for tomato plant disease detection.
+            It uses a two-stage pipeline to first
             verify that an uploaded image contains a tomato leaf, then classify any disease present.
             <br><br>
             The system is designed for use by smallholder farmers, agricultural extension officers,
